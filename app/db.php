@@ -25,9 +25,14 @@ function db_query ($sql, $data = array(), $is_search = false, $search_one = fals
         /*Para consultas de tipo READ */
         if($search_one){
             /*Para Buscar un solo Registro */
+            $result = $mysql->fetch(PDO::FETCH_ASSOC);
         }else{
             /*Para todos los registros */
+            $result = $mysql->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        $db = null;
+        return $result;
     }else{
         /*Para consultas de tipo , CREATE, DELETE y UPDATE */
         $db = null;
